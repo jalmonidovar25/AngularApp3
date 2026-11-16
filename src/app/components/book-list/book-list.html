@@ -1,0 +1,21 @@
+
+<section class="book-container">
+  <h2>Available Books</h2>
+  <p>Browse books from our library database.</p>
+
+  @if (errorMessage) {
+    <p class="error">{{ errorMessage }}</p>
+  }
+
+  <div class="book-grid">
+    @for (book of books; track book.id) {
+      <div class="book-card">
+        <h3>{{ book.title }}</h3>
+        <p><strong>Author:</strong> {{ book.author }}</p>
+        <p>{{ book.description }}</p>
+      </div>
+    } @empty {
+      <p>No books available.</p>
+    }
+  </div>
+</section>
