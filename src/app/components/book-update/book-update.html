@@ -1,0 +1,33 @@
+<section class="form-container">
+  <h2>Update Book</h2>
+  <p>Select a book to edit its information.</p>
+
+  <div class="book-list">
+    @for (book of books; track book.id) {
+      <button type="button" (click)="selectBook(book)">
+        {{ book.title }}
+      </button>
+    }
+  </div>
+
+  @if (selectedBook) {
+    <form (ngSubmit)="updateBook()">
+      <label>Book Title</label>
+      <input type="text" name="title"
+        [(ngModel)]="selectedBook.title" required>
+
+      <label>Author</label>
+      <input type="text" name="author"
+        [(ngModel)]="selectedBook.author" required>
+
+      <label>Description</label>
+      <textarea name="description"
+        [(ngModel)]="selectedBook.description" required>
+      </textarea>
+
+      <button type="submit">Save Changes</button>
+    </form>
+  }
+
+  <p>{{ message }}</p>
+</section>

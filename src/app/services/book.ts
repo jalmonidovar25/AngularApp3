@@ -1,4 +1,3 @@
-
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -9,17 +8,15 @@ import { Book } from '../models/book';
 })
 export class BookService {
   private http = inject(HttpClient);
-
-  // PHP backend API location
   private apiUrl = 'http://localhost/AngularApp3API/books.php';
 
-  // Get all books from the database
+  // Get all books
   getBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(this.apiUrl);
   }
 
-  // Add a new book
-  addBook(book: Omit<Book, 'id'>): Observable<any> {
+  // Add a book with file upload
+  addBook(book: FormData): Observable<any> {
     return this.http.post(this.apiUrl, book);
   }
 

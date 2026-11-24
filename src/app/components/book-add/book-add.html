@@ -1,0 +1,27 @@
+<section class="form-container">
+  <h2>Add New Book</h2>
+
+  <form (ngSubmit)="addBook()">
+    <label>Book Title</label>
+    <input type="text" name="title"
+      [(ngModel)]="title" required>
+
+    <label>Author</label>
+    <input type="text" name="author"
+      [(ngModel)]="author" required>
+
+    <label>Description</label>
+    <textarea name="description"
+      [(ngModel)]="description" required>
+    </textarea>
+
+    <label>Book Cover (Optional)</label>
+    <input type="file"
+      accept=".jpg,.jpeg,.png"
+      (change)="onFileSelected($event)">
+
+    <button type="submit">Add Book</button>
+  </form>
+
+  <p>{{ message }}</p>
+</section>

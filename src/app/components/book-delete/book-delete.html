@@ -1,0 +1,21 @@
+<section class="form-container">
+  <h2>Delete Book</h2>
+  <p>Select a book to remove from the database.</p>
+
+  @for (book of books; track book.id) {
+    <div class="book-item">
+      <div>
+        <h3>{{ book.title }}</h3>
+        <p>{{ book.author }}</p>
+      </div>
+
+      <button type="button" (click)="deleteBook(book.id)">
+        Delete
+      </button>
+    </div>
+  } @empty {
+    <p>No books available.</p>
+  }
+
+  <p>{{ message }}</p>
+</section>
